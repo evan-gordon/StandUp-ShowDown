@@ -10,12 +10,16 @@ public class SeatContoller : MonoBehaviour
     private static Vector2Int gridCloseRight = new Vector2Int(-2, 0);
     private static Vector2Int gridFarLeft = new Vector2Int(3, 4);
     private Grid g;
+    
+    // This flag determines whether we must use ALL advanced shapes before repeating any.
+    private bool useUniqueShapesOnly = true;
 
     // Start is called before the first frame update
     void Start()
     {
         g = this.GetComponent<Grid>();
         FillGrid();
+        OverlayAdvancedShapes(4);
     }
 
     // Update is called once per frame
@@ -24,6 +28,7 @@ public class SeatContoller : MonoBehaviour
         
     }
 
+    // FillGrid will populate the audience grid with randomly chosen characters.
     public void FillGrid()
     {
         for(int x = gridCloseRight.x; x < gridFarLeft.x; x++) {
@@ -32,6 +37,16 @@ public class SeatContoller : MonoBehaviour
                 Debug.Log(pos);
                 Instantiate(npcPrefab, pos, Quaternion.identity, this.transform);    
             }
+        }
+    }
+
+    // OverlayAdvancedShapes will overlay shapeCount shapes over an existing grid, populating it with predefined groups of similar characters.
+    public void OverlayAdvancedShapes(int shapeCount)
+    {
+        AudienceShape[] advancedShapes = ShapeConstants.ChooseRandomShapes(shapeCount, useUniqueShapesOnly);
+        for (int i = 0; i < advancedShapes.Length; i++)
+        {
+            Debug.Log(advancedShapes[i].name);
         }
     }
 }
