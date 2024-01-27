@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Used for getting global references to the player
+    public static PlayerController instance;
+
     public float speed = 10f;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
