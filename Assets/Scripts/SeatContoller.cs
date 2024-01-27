@@ -9,6 +9,8 @@ public class SeatContoller : MonoBehaviour
     public GameObject npcPrefab;
     private static Vector2Int gridCloseRight = new Vector2Int(-2, 0);
     private static Vector2Int gridFarLeft = new Vector2Int(3, 4);
+    // https://docs.unity3d.com/ScriptReference/Grid.html
+    // https://docs.unity3d.com/ScriptReference/GridLayout.html
     private Grid g;
     
     // This flag determines whether we must use ALL advanced shapes before repeating any.
@@ -35,6 +37,7 @@ public class SeatContoller : MonoBehaviour
             for( int z = gridCloseRight.y; z < gridFarLeft.y; z++) {
                 Vector3 pos = g.CellToWorld(new Vector3Int(x, 3, z));
                 Debug.Log(pos);
+                // https://docs.unity3d.com/ScriptReference/Object.Instantiate.html
                 Instantiate(npcPrefab, pos, Quaternion.identity, this.transform);    
             }
         }
