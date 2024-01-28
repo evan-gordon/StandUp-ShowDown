@@ -24,6 +24,16 @@ public class NPC
         }
         return false;
     }
+
+    public bool HasActiveRequest()
+    {
+        return activeRequest != null;
+    }
+
+    public void ClearRequest()
+    {
+        activeRequest = null;
+    }
 }
 
 

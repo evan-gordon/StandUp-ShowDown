@@ -53,9 +53,16 @@ public class SeatController : MonoBehaviour
             spawnTimer = spawnInterval;
             if (activeRequests < maxRequests)
             {
-                // Pick random seat
-                int newRequestX = random.Next(0, gridRepresentation.GetLength(0));
-                int newRequestY = random.Next(0, gridRepresentation.GetLength(1));
+                int newRequestX;
+                int newRequestY;
+                int tries = 5;
+                do
+                {
+                    // Pick random seat
+                    newRequestX = random.Next(0, gridRepresentation.GetLength(0));
+                    newRequestY = random.Next(0, gridRepresentation.GetLength(1));
+                    tries--;
+                } while (gridRepresentation[newRequestX, newRequestY].HasActiveRequest() && tries > 0);
                 SpawnEmojiRequest(newRequestX, newRequestY);
             }
         }
@@ -74,6 +81,8 @@ public class SeatController : MonoBehaviour
         reqComponent.life = requestLifetime;
         reqComponent.requestedEmoji = primaryEmoji;
         reqComponent.otherEmoji = possibleEmoji;
+        reqComponent.parent = gridRepresentation[x, z];
+        gridRepresentation[x, z].SetRequest(reqComponent);
     }
 
 
