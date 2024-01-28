@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1521265682, guid: f80d6a203ee49b705962edaec6bf38a8, type: 3}
+  m_Sprite: {fileID: 967020708, guid: f80d6a203ee49b705962edaec6bf38a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,8 +142,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8660303116021928699}
+  - component: {fileID: 5342215254122654853}
   m_Layer: 0
-  m_Name: Emoji
+  m_Name: Emoji_hot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,3 +166,18 @@ Transform:
   - {fileID: 4006383906194551085}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5342215254122654853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386779559747492258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58cc4add7496f9b4785de93749181ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 1
+  requestedEmoji: 0
+  otherEmoji: 00000000
