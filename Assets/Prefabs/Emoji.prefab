@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6554276440370347480}
   - component: {fileID: 2136993444246067079}
   - component: {fileID: 2208214949207783074}
+  - component: {fileID: 4168912578067911229}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -133,6 +134,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conveyor: {fileID: 0}
+--- !u!114 &4168912578067911229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157380710163340469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746ea6858d1912b4ab75da50984f4b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emojiSpriteRenderer: {fileID: 0}
+  newSprites:
+  - {fileID: 2030914695, guid: f80d6a203ee49b705962edaec6bf38a8, type: 3}
+  - {fileID: 606418082, guid: f80d6a203ee49b705962edaec6bf38a8, type: 3}
+  - {fileID: -1052471448, guid: f80d6a203ee49b705962edaec6bf38a8, type: 3}
+  - {fileID: 1899399654, guid: f80d6a203ee49b705962edaec6bf38a8, type: 3}
 --- !u!1 &3386779559747492258
 GameObject:
   m_ObjectHideFlags: 0
