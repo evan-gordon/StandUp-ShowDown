@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     private Transform parent;
     [SerializeField]
     public Sprite BulletImage;
+    public EmojiEnum emojiAmmoType;
 
     void Start()
     {
@@ -34,7 +35,15 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        SeatController.instance.RemoveNPCFromSeat(c.gameObject);
+        var enemy = c.GetComponentInChildren<EnemyController>();
+        var wantEmojis = new List<EmojiEnum>(enemy.wantEmojis);
+        if (!wantEmojis.Contains(emojiAmmoType))
+        {
+            // NPC didn't like the joke, maybe do something?
+            return;
+        }
+
+        SeatController.instance.RemoveNPCFromSeat(c.gameObject, enemy.seatLoc);
         Destroy(c.gameObject);
         PlayerController.instance.AddScore(1);
         // TODO call some 'onDeath' code here instead.

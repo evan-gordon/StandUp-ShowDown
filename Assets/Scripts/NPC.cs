@@ -40,6 +40,11 @@ public class NPC
 
     public void ClearRequest()
     {
+        if (activeRequest == null)
+        {
+            return;
+        }
+        activeRequest.RemoveRequest();
         activeRequest = null;
     }
 }
