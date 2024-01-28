@@ -14,7 +14,7 @@ public class SeatController : MonoBehaviour
     [SerializeField] public GameObject emojiRequestPrefab;
     [SerializeField] public NPCData[] allNPCS;
     [SerializeField] public EmojiData[] allEmojis;
-    private Dictionary<EmojiEnum, Sprite> emojiIdToPrefab = new Dictionary<EmojiEnum, Sprite>();
+    public Dictionary<EmojiEnum, Sprite> emojiIdToPrefab = new Dictionary<EmojiEnum, Sprite>();
     private static Vector2Int gridCloseRight = new Vector2Int(-2, 0);
     private static Vector2Int gridFarLeft = new Vector2Int(3, 4);
     // https://docs.unity3d.com/ScriptReference/Grid.html
@@ -185,7 +185,7 @@ public class SeatController : MonoBehaviour
     }
 
     // This may cause sync issues with gridRepresentation, possibly want to look more into this.
-    public void RemoveNPCFromSeat(GameObject go)
+    public void RemoveNPCFromSeat(GameObject go, Vector2Int seatLoc)
     {
         foreach( KeyValuePair<Vector2Int, GameObject> kvp in SeatToNPC )
         {
@@ -193,6 +193,7 @@ public class SeatController : MonoBehaviour
             {
                 SeatToNPC.Remove(kvp.Key);
                 AudioSource.PlayOneShot(DeathSound);
+                gridRepresentation[seatLoc.x, seatLoc.y].ClearRequest();
                 return;
             }
         }
@@ -215,5 +216,10 @@ public class SeatController : MonoBehaviour
     private NPCData getRandomNPCData()
     {
         return allNPCS[random.Next(allNPCS.Length)];
+    }
+
+    public EmojiData GetRandomEmoji()
+    {
+        return allEmojis[random.Next(allEmojis.Length)];
     }
 }

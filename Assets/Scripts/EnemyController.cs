@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public int id { get; private set; }
+    public EmojiEnum[] wantEmojis { get; private set; }
     // We might be able to use this to make sure the grid syncs content.
     public Vector2Int seatLoc { get; private set; }
     private SpriteRenderer sr;
@@ -18,5 +19,6 @@ public class EnemyController : MonoBehaviour
         sr.sprite = data.img;
         id = data.id;
         seatLoc = seat;
+        wantEmojis = data.acceptableEmoji;
     }
 }

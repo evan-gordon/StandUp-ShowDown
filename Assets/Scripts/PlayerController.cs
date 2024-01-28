@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
 
     public Sprite currentBullet;
+    public EmojiEnum currentAmmoType;
 
     void Awake()
     {
@@ -40,9 +41,11 @@ public class PlayerController : MonoBehaviour
 
     // Used by Pickup.cs
     // We can change this later to add different ammo types.
-    public void AddAmmo(Sprite BulletType)
+    public void AddAmmo(EmojiEnum ee)
     {
-        currentBullet = BulletType;
+        currentAmmoType = ee;
+        currentBullet = SeatController.instance.emojiIdToPrefab[currentAmmoType];
+        canShoot = true;
     }
 
     public void AddScore(int amount)

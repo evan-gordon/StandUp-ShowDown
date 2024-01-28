@@ -17,10 +17,6 @@ public class Conveyor : MonoBehaviour
     private float spawnInterval = 2.5f;
 
 
-    void Start()
-    {
-    }
-
     void FixedUpdate()
     {
         UpdateSpawnTimer();

@@ -42,9 +42,11 @@ public class Gun : MonoBehaviour
     {
         if (PlayerController.instance.canShoot) {
             GameObject b = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
-            b.GetComponentInChildren<Bullet>().direction = PlayerController.playerCamera.transform.forward;
-            b.GetComponentInChildren<Bullet>().BulletImage = PlayerController.instance.currentBullet;
-            b.GetComponentInChildren<Bullet>().speed *= charge;
+            var bulletComp = b.GetComponentInChildren<Bullet>();
+            bulletComp.direction = PlayerController.playerCamera.transform.forward;
+            bulletComp.BulletImage = PlayerController.instance.currentBullet;
+            bulletComp.emojiAmmoType = PlayerController.instance.currentAmmoType;
+            bulletComp.speed *= charge;
             PlayerController.instance.canShoot = false;
             AudioSource.PlayOneShot(Whoosh);
         }

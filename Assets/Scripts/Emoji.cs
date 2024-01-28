@@ -9,13 +9,13 @@ public class Emoji : MonoBehaviour
     [SerializeField]
     public Sprite[] newSprites;
     public Conveyor conveyor;
+    private EmojiEnum e;
 
     private void OnTriggerEnter(Collider c)
     {
         if (c.name == "Player")
         {
-            PlayerController.instance.AddAmmo(this.GetComponent<SpriteRenderer>().sprite);
-            PlayerController.instance.canShoot = true;
+            PlayerController.instance.AddAmmo(e);
             conveyor.RemoveEmoji(this.transform.parent.gameObject);
             Destroy(this.transform.parent.gameObject);
         }
@@ -23,12 +23,8 @@ public class Emoji : MonoBehaviour
     void Start()
     {
         emojiSpriteRenderer = GetComponent<SpriteRenderer>();
-        emojiSpriteRenderer.sprite = newSprites[Random.Range(0, newSprites.Length)]; ;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var emojiData = SeatController.instance.GetRandomEmoji();
+        e = emojiData.id;
+        emojiSpriteRenderer.sprite = emojiData.img;
     }
 }

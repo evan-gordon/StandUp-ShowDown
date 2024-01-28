@@ -10,11 +10,6 @@ public class Request : MonoBehaviour
     public EmojiEnum[] otherEmoji = new EmojiEnum[] {EmojiEnum.POOP};  // Other acceptable emoji. TBD if we'll use this.
     public NPC parent = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -44,5 +39,10 @@ public class Request : MonoBehaviour
             return 1;
         }
         return 2;
+    }
+
+    public void RemoveRequest()
+    {
+        Destroy(this.transform.gameObject);
     }
 }
