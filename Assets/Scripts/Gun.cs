@@ -13,11 +13,15 @@ public class Gun : MonoBehaviour
     [SerializeField] public float charge = 0.0f;
     [SerializeField] public float chargeGrowSpeed = 0.3f;
     public Vector3 OriginalPos;
+    public AudioSource AudioSource;
+    [SerializeField]
+    public AudioClip Whoosh;
     //private float cooldownTimer;
 
     public void Start()
     {
         //cooldownTimer = 0.0f;
+        AudioSource = GetComponent<AudioSource>();
     }
     public void Update()
     {
@@ -42,6 +46,7 @@ public class Gun : MonoBehaviour
             b.GetComponentInChildren<Bullet>().BulletImage = PlayerController.instance.currentBullet;
             b.GetComponentInChildren<Bullet>().speed *= charge;
             PlayerController.instance.canShoot = false;
+            AudioSource.PlayOneShot(Whoosh);
         }
     }
 }
