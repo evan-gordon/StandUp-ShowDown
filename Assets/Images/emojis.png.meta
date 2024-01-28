@@ -2924,7 +2924,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: emojis_134
+      name: broken_heart
       rect:
         serializedVersion: 2
         x: 304
@@ -3310,7 +3310,7 @@ TextureImporter:
         width: 19
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3331,7 +3331,7 @@ TextureImporter:
         width: 20
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3344,15 +3344,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: emojis_7
+      name: snowflake
       rect:
         serializedVersion: 2
         x: 369
-        y: 118
+        y: 117
         width: 20
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3373,7 +3373,7 @@ TextureImporter:
         width: 20
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3394,7 +3394,7 @@ TextureImporter:
         width: 20
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4575,6 +4575,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       alien: 1899399654
+      broken_heart: 1488995406
       cat: -948759712
       clown: 1500732484
       cowboy: -1052471448
@@ -4612,7 +4613,6 @@ TextureImporter:
       emojis_131: -2043522878
       emojis_132: 1768482472
       emojis_133: -956572449
-      emojis_134: 1488995406
       emojis_135: -1687377723
       emojis_136: 67150564
       emojis_137: -494080459
@@ -4688,7 +4688,6 @@ TextureImporter:
       emojis_67: 288058021
       emojis_68: 1493947823
       emojis_69: -1151616700
-      emojis_7: 1058416092
       emojis_70: -518818098
       emojis_71: -592037443
       emojis_72: 197139066
@@ -4731,6 +4730,7 @@ TextureImporter:
       robot: -978535832
       scared: 54076122
       sleep: 914386598
+      snowflake: 1058416092
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

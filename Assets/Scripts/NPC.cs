@@ -1,16 +1,24 @@
 public class NPC
 {
-    public string name { get; private set; }
-    public int prefabNum { get; private set; }
-    public int[] acceptableEmoji { get; private set; }
+    public string name
+    {
+        get { return data.npcName; }
+    }
+    public int prefabNum
+    {
+        get { return data.id; }
+    }
+    public EmojiEnum[] acceptableEmoji
+    {
+        get { return data.acceptableEmoji; }
+    }
 
     public Request activeRequest { get; private set; }
+    public NPCData data { get; private set; }
 
-    public NPC(string name, int prefabNum, int[] acceptableEmoji)
+    public NPC(NPCData data)
     {
-        this.name = name;
-        this.prefabNum = prefabNum;
-        this.acceptableEmoji = acceptableEmoji;
+        this.data = data; 
         this.activeRequest = null;
     }
 

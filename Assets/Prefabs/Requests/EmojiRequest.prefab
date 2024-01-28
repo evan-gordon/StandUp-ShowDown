@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8380353172200250759}
   - component: {fileID: 6554276440370347480}
   - component: {fileID: 2136993444246067079}
-  - component: {fileID: 2208214949207783074}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -120,19 +119,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.25, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2208214949207783074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1157380710163340469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcd6fac7ebf8e38b89350336906bc707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conveyor: {fileID: 0}
 --- !u!1 &3386779559747492258
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +130,7 @@ GameObject:
   - component: {fileID: 8660303116021928699}
   - component: {fileID: -6806287791543817959}
   m_Layer: 0
-  m_Name: Emoji_cat
+  m_Name: EmojiRequest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
