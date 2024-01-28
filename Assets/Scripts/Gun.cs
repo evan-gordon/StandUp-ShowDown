@@ -24,7 +24,11 @@ public class Gun : MonoBehaviour
     }
     public void Shoot()
     {
-        GameObject b = Instantiate(bulletPrefab, transform.position, Quaternion.identity ) as GameObject;
-        b.GetComponentInChildren<Bullet>().direction = PlayerController.playerCamera.transform.forward;
+        if (PlayerController.instance.canShoot) {
+            GameObject b = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+            b.GetComponentInChildren<Bullet>().direction = PlayerController.playerCamera.transform.forward;
+            b.GetComponentInChildren<Bullet>().BulletImage = PlayerController.instance.currentBullet;
+            PlayerController.instance.canShoot = false;
+        }
     }
 }

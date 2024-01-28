@@ -8,10 +8,14 @@ public class Bullet : MonoBehaviour
     public float life = 5.0f; // Number of seconds before deleting this bullet
     public Vector3 direction;
     private Transform parent;
+    [SerializeField]
+    public Sprite BulletImage;
 
     void Start()
     {
         parent = transform.parent.transform;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = BulletImage;
     }
 
     void FixedUpdate()
