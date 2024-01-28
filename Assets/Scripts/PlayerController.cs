@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     // Used for getting global references to the player
     public static PlayerController instance;
+    public static Camera playerCamera;
 
     [SerializeField]
     public GameObject gun;
@@ -23,13 +24,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        playerCamera = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + GetComponentInChildren<Camera>().transform.right * speed * Time.deltaTime * Input.GetAxis("Horizontal");
-        transform.position = transform.position + GetComponentInChildren<Camera>().transform.forward * speed * Time.deltaTime * Input.GetAxis("Vertical");
+        transform.position = transform.position + playerCamera.transform.right * speed * Time.deltaTime * Input.GetAxis("Horizontal");
+        transform.position = transform.position + playerCamera.transform.forward * speed * Time.deltaTime * Input.GetAxis("Vertical");
     }
 
     // Used by Pickup.cs
