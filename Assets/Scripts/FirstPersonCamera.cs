@@ -10,6 +10,10 @@ public class FirstPersonCamera : MonoBehaviour
     public float ySensitivity = .6f;
     [SerializeField]
     public float smoothRate = 2f;
+    [SerializeField]
+    public int maxUpAngle = 90;
+    [SerializeField]
+    public int minUpAngle = -90;
     public GameObject player;
     private Vector2 mouseMovement;
     private Vector2 lerpedMouseMovement;
@@ -31,7 +35,7 @@ public class FirstPersonCamera : MonoBehaviour
         lerpedMouseMovement.y = Mathf.Lerp(lerpedMouseMovement.y, mouseDelta.y, 1f / smoothRate);
         mouseMovement += lerpedMouseMovement;
 
-        // TODO need to clamp the y rotation
+        mouseMovement.y = Mathf.Clamp(mouseMovement.y, minUpAngle, maxUpAngle);
         transform.localRotation = Quaternion.AngleAxis(-mouseMovement.y, Vector3.right);
         player.transform.localRotation = Quaternion.AngleAxis(mouseMovement.x, player.transform.up);
     }
