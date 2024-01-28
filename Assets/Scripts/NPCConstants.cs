@@ -12,6 +12,7 @@ static class NPCConstants
 
     static NPCConstants()
     {
-        polarbear = new NPC("polar bear", 0, new int[] { });
+        polarbear = new NPC("polar bear", 0, new int[] {1, 2, 3, 0});
+        evilPolarbear = new NPC("evil polar bear", 1, new int[] { 3, 4, 5, 0});
     }
 }

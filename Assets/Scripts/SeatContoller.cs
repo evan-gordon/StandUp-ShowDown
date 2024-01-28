@@ -8,6 +8,7 @@ public class SeatContoller : MonoBehaviour
 {
     [SerializeField]
     public GameObject[] npcPrefabList;
+    public GameObject[] emojiPrefabList;
     private static Vector2Int gridCloseRight = new Vector2Int(-2, 0);
     private static Vector2Int gridFarLeft = new Vector2Int(3, 4);
     // https://docs.unity3d.com/ScriptReference/Grid.html
