@@ -50,5 +50,19 @@ public class Conveyor : MonoBehaviour
     private void SpawnEmoji() {
         var newEmoji = Instantiate(emojiPrefab, startLoc.transform.position, Quaternion.identity, this.transform);
         emojis.Add(newEmoji);
+        Pickup pu = newEmoji.GetComponentInChildren<Pickup>();
+        pu.conveyor = this;
+    }
+
+    public void RemoveEmoji(GameObject go)
+    {
+        for (int i = 0; i < emojis.Count - 1; i++)
+        {
+            if (emojis[i] == go)
+            {
+                emojis.RemoveAt(i);
+                return;
+            }
+        }
     }
 }

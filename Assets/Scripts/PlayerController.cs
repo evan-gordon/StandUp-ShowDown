@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
 
     public float speed = 10f;
+    public int ammo = 0;
 
     void Awake()
     {
@@ -28,5 +29,12 @@ public class PlayerController : MonoBehaviour
             0,
             Input.GetAxis("Vertical") * speed * Time.deltaTime
         );
+    }
+
+    // Used by Pickup.cs
+    // We can change this later to add different ammo types.
+    public void AddAmmo(int amount)
+    {
+        ammo += amount;
     }
 }
