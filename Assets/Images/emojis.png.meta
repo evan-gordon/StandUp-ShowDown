@@ -3301,6 +3301,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: eggplant
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 119
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcda1da00f0f5372abe43214d81adb72
+      internalID: -1307468668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meat
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 119
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06fc580a0f91fb82380d6b37176adc9b
+      internalID: 496050374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emojis_7
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 118
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e08db7397f6d17e19f8ce2231b56c6f
+      internalID: 1058416092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 63
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49747ad2ef38dc121941f1762e5c5c3a
+      internalID: 1665132837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 63
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eda944bdea16d9fa9020f66373179be
+      internalID: 887324329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline:
     - - {x: -188, y: -94}
       - {x: -190, y: -96}
@@ -4476,6 +4581,7 @@ TextureImporter:
       dead: -692693597
       devil: 2030914695
       dog: 606418082
+      eggplant: -1307468668
       emojis_0: 1983810851
       emojis_1: 726721673
       emojis_10: 999445928
@@ -4582,6 +4688,7 @@ TextureImporter:
       emojis_67: 288058021
       emojis_68: 1493947823
       emojis_69: -1151616700
+      emojis_7: 1058416092
       emojis_70: -518818098
       emojis_71: -592037443
       emojis_72: 197139066
@@ -4611,10 +4718,13 @@ TextureImporter:
       emojis_97: 881496425
       emojis_98: 668427046
       emojis_99: 1887491424
+      fire: 887324329
+      fish: 1665132837
       heart: 814647792
       kiss: 1902710316
       laugh: -1073877761
       love: 1261301363
+      meat: 496050374
       metl: 1294926060
       money: 499955
       poop: 1521265682
