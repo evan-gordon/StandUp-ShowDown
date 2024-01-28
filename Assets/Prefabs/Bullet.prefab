@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7796716777527719105}
   - component: {fileID: 4316842370888418217}
   - component: {fileID: 3814448817950221981}
+  - component: {fileID: 4198162216033127473}
   m_Layer: 6
   m_Name: BulletImage
   m_TagString: Untagged
@@ -108,7 +109,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 129
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -119,6 +120,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.2, z: 0.16}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4198162216033127473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5730704618181175892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279cac5526e88c04aba269f4bc633ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  life: 5
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &8284189425040668424
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +144,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2386494448092483592}
-  - component: {fileID: 2599416696633309387}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -152,18 +167,3 @@ Transform:
   - {fileID: 7250149184113476221}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2599416696633309387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8284189425040668424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279cac5526e88c04aba269f4bc633ea5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  life: 30
-  direction: {x: 0, y: 0, z: 0}
