@@ -2222,16 +2222,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c586a1833e1b8c5dfa659e5c290212da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcPrefabList:
-  - {fileID: 6057357572537157554, guid: 7564455a3fc79bb46b6e281d8f171807, type: 3}
-  - {fileID: 6057357572537157554, guid: 22579efc7a3893c449f959b8b889c503, type: 3}
-  emojiPrefabList:
-  - {fileID: 3386779559747492258, guid: edab8e2c9ce8d18499357dfba8208acb, type: 3}
-  - {fileID: 3386779559747492258, guid: 80cbe84351977994faf5509c1e9a66de, type: 3}
-  - {fileID: 3386779559747492258, guid: 664bb6cd16b2e184c93df690d66bd13b, type: 3}
-  - {fileID: 3386779559747492258, guid: 9a35ed1a75729824c8ee7b4870f45a85, type: 3}
-  - {fileID: 3386779559747492258, guid: 5ae5eaaebd78bee4ea5128d15157819f, type: 3}
-  - {fileID: 3386779559747492258, guid: 45bf93539c2e74043808977b37d4c53d, type: 3}
+  npcPrefab: {fileID: 6057357572537157554, guid: 7564455a3fc79bb46b6e281d8f171807, type: 3}
+  allNPCS:
+  - {fileID: 11400000, guid: 51dd8dbf62dc04286881a01db75f31a1, type: 2}
+  - {fileID: 11400000, guid: f7e225d65eb3e508a9d4036bce47e406, type: 2}
+  - {fileID: 11400000, guid: 23cf02b9d49e14b2cab1d71a01532546, type: 2}
+  - {fileID: 11400000, guid: 411b369efd9218323a798fb2b28face6, type: 2}
+  - {fileID: 11400000, guid: ae18961722849f1af8054d1ef343b446, type: 2}
+  allEmojis:
+  - {fileID: 11400000, guid: 685f9e0e727a49790bf61b2e3dd3fdc3, type: 2}
+  - {fileID: 11400000, guid: bbcb5f6638d3eb6309a8b867c510d307, type: 2}
+  - {fileID: 11400000, guid: f20aa6efd79381fd59d5b0c1ed6ad843, type: 2}
+  - {fileID: 11400000, guid: d2b784aefdf612869a4a75ac9b969155, type: 2}
+  - {fileID: 11400000, guid: 6aabc4745b54d0e5399413aff640226e, type: 2}
+  - {fileID: 11400000, guid: f596c056af383279aa5602224b019446, type: 2}
+  - {fileID: 11400000, guid: 1ca24c8b298fb4cdfaf8830efffb5f48, type: 2}
+  - {fileID: 11400000, guid: 9c79772d49479c8eba5b627a2f58b01f, type: 2}
+  - {fileID: 11400000, guid: 4dda7689a3aea728eb61b233cf2bff26, type: 2}
+  - {fileID: 11400000, guid: b6b3b879f88b85a478ef0c1b9a397bed, type: 2}
+  - {fileID: 11400000, guid: 796defa83ba91a3fd86ff6785dcbb798, type: 2}
 --- !u!156049354 &549891678
 Grid:
   m_ObjectHideFlags: 0

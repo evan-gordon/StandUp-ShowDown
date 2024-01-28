@@ -9,8 +9,12 @@ public class SeatController : MonoBehaviour
 {
     // Singleton :)
     public static SeatController instance;
-    [SerializeField] public GameObject[] npcPrefabList;
-    [SerializeField] public GameObject[] emojiPrefabList;
+    // Holds the scriptable objects
+    [SerializeField] public GameObject npcPrefab;
+    [SerializeField] public GameObject emojiRequestPrefab;
+    [SerializeField] public NPCData[] allNPCS;
+    [SerializeField] public EmojiData[] allEmojis;
+    private Dictionary<EmojiEnum, Sprite> emojiIdToPrefab = new Dictionary<EmojiEnum, Sprite>();
     private static Vector2Int gridCloseRight = new Vector2Int(-2, 0);
     private static Vector2Int gridFarLeft = new Vector2Int(3, 4);
     // https://docs.unity3d.com/ScriptReference/Grid.html
@@ -35,6 +39,10 @@ public class SeatController : MonoBehaviour
     void Awake()
     {
         instance = this;
+        foreach ( var e in allEmojis)
+        {
+            emojiIdToPrefab[e.id] = e.img;
+        }
     }
 
     // Start is called before the first frame update
@@ -51,52 +59,55 @@ public class SeatController : MonoBehaviour
     // Called once per frame
     private void FixedUpdate()
     {
-        UpdateSpawnTimer();
+        spawnTimer -= Time.fixedDeltaTime;
+        if (spawnTimer > 0)
+        {
+            return;
+        }
+        spawnTimer = spawnInterval;
+        SpawnNPC();
     }
 
-    private void UpdateSpawnTimer()
+    private void SpawnNPC()
     {
-        if (spawnTimer <= 0)
+        if (activeRequests >= maxRequests)
         {
-            spawnTimer = spawnInterval;
-            if (activeRequests < maxRequests)
-            {
-                int newRequestX;
-                int newRequestY;
-                int tries = 5;
-                do
-                {
-                    // Pick random seat
-                    newRequestX = random.Next(0, gridRepresentation.GetLength(0));
-                    newRequestY = random.Next(0, gridRepresentation.GetLength(1));
-                    // check if seat is empty
-                    // looks like this doesn't totally work :/
-                    if (!SeatIsFilled(new Vector2Int(newRequestX, newRequestY)))
-                    {
-                        tries--;
-                        continue;
-                    }
-                    // check for request
-                    if (!gridRepresentation[newRequestX, newRequestY].HasActiveRequest())
-                    {
-                        break;
-                    }
-                    tries--;
-                } while (tries > 0);
-                SpawnEmojiRequest(newRequestX, newRequestY);
-            }
+            return;
         }
-        spawnTimer -= Time.deltaTime;
+        int newRequestX;
+        int newRequestY;
+        int tries = 5;
+        do
+        {
+            // Pick random seat
+            newRequestX = random.Next(0, gridRepresentation.GetLength(0));
+            newRequestY = random.Next(0, gridRepresentation.GetLength(1));
+            // check if seat is empty
+            // looks like this doesn't totally work :/
+            if (!SeatIsFilled(new Vector2Int(newRequestX, newRequestY)))
+            {
+                tries--;
+                continue;
+            }
+            // check for request
+            if (!gridRepresentation[newRequestX, newRequestY].HasActiveRequest())
+            {
+                break;
+            }
+            tries--;
+        } while (tries > 0);
+        SpawnEmojiRequest(newRequestX, newRequestY);
     }
 
     private void SpawnEmojiRequest(int x, int z)
     {
-        int[] possibleEmoji = gridRepresentation[x, z].acceptableEmoji;
-        int primaryEmoji = possibleEmoji[random.Next(0, possibleEmoji.Length)];
+        EmojiEnum[] possibleEmoji = gridRepresentation[x, z].acceptableEmoji;
+        EmojiEnum primaryEmoji = possibleEmoji[random.Next(0, possibleEmoji.Length)];
         Vector3 pos = getPositionVector(x, 3+z, z);
         pos.x += 0.7f;
         pos.y += 1.4f;
-        GameObject req = Instantiate(emojiPrefabList[primaryEmoji], pos, Quaternion.identity, this.transform);
+        GameObject req = Instantiate(emojiRequestPrefab, pos, Quaternion.identity, this.transform);
+        req.GetComponentInChildren<SpriteRenderer>().sprite = emojiIdToPrefab[primaryEmoji];
         var reqComponent = req.GetComponent<Request>();
         reqComponent.life = requestLifetime;
         reqComponent.requestedEmoji = primaryEmoji;
@@ -106,14 +117,16 @@ public class SeatController : MonoBehaviour
     }
 
 
-    // RandomGrid will populate a grid representation with randomly chosen characters.
+    // RandomGrid will populate a grid.
+    // Each seat will contain a randomly chosen character.
     public void RandomGrid(int xSize, int ySize)
     {
         gridRepresentation = new NPC[xSize, ySize];
-        int npcTypeCount = npcPrefabList.Length;
         for(int x = 0; x < xSize; x++) {
             for( int y = 0; y < ySize; y++) {
-                gridRepresentation[x, y] = NPCConstants.GetNPC(random.Next(npcTypeCount));
+                var data = getRandomNPCData();
+                Debug.Log(data.npcName);
+                gridRepresentation[x, y] = new NPC(data);
             }
         }
     }
@@ -125,7 +138,7 @@ public class SeatController : MonoBehaviour
         for (int i = 0; i < advancedShapes.Length; i++)
         {
             AudienceShape shape = advancedShapes[i];
-            int npcType = random.Next(npcPrefabList.Length);
+            var npcData = getRandomNPCData();
             int shapeOriginX = random.Next(gridRepresentation.GetLength(0) - shape.width);
             int shapeOriginY = random.Next(gridRepresentation.GetLength(1) - shape.height);
             
@@ -134,7 +147,7 @@ public class SeatController : MonoBehaviour
                 for (int yMod = 0; yMod < shape.height; yMod++)
                 {
                     if (shape.layout[xMod, yMod]) {
-                        gridRepresentation[shapeOriginX + xMod, shapeOriginY + yMod] = NPCConstants.GetNPC(npcType);
+                        gridRepresentation[shapeOriginX + xMod, shapeOriginY + yMod] = new NPC(npcData);
                     }
                 }
             }
@@ -148,9 +161,14 @@ public class SeatController : MonoBehaviour
             for (int z =  0; z < gridRepresentation.GetLength(1); z++)
             {
                 Vector3 pos = getPositionVector(x, 3, z);
-                Debug.Log(pos);
+                if (gridRepresentation[x,z] == null)
+                {
+                    continue;
+                }
                 // https://docs.unity3d.com/ScriptReference/Object.Instantiate.html
-                var go = Instantiate(npcPrefabList[gridRepresentation[x,z].prefabNum], pos, Quaternion.identity, this.transform) as GameObject;
+                var go = Instantiate(npcPrefab, pos, Quaternion.identity, this.transform) as GameObject;
+                // set data on the npc GameObject instance. 
+                go.GetComponentInChildren<EnemyController>().SetData(gridRepresentation[x,z].data, new Vector2Int(x, z));
                 SeatToNPC[new Vector2Int(x, z)] = go;
             }
         }
@@ -186,5 +204,10 @@ public class SeatController : MonoBehaviour
         Vector3 pos = g.CellToWorld(new Vector3Int(x + xMod, 3 + z, z + zMod));
         pos.x = pos.x + (float)((z % 2)); //Add slight horizontal offset to even rows.
         return pos;
+    }
+
+    private NPCData getRandomNPCData()
+    {
+        return allNPCS[random.Next(allNPCS.Length)];
     }
 }
