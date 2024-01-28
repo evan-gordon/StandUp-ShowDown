@@ -6653,6 +6653,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6036204192689363476, guid: 524413b7f2d96214a95fcd1711ab3a27, type: 3}
+      propertyPath: sensitivityX
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036204192689363476, guid: 524413b7f2d96214a95fcd1711ab3a27, type: 3}
+      propertyPath: sensitivityY
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6906020187158229943, guid: 524413b7f2d96214a95fcd1711ab3a27, type: 3}
       propertyPath: gun
       value: 
