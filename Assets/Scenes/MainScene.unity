@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcPrefab: {fileID: 6057357572537157554, guid: 7564455a3fc79bb46b6e281d8f171807, type: 3}
-  emojiRequestPrefab: {fileID: 0}
+  emojiRequestPrefab: {fileID: 3386779559747492258, guid: 9a35ed1a75729824c8ee7b4870f45a85, type: 3}
   allNPCS:
   - {fileID: 11400000, guid: 51dd8dbf62dc04286881a01db75f31a1, type: 2}
   - {fileID: 11400000, guid: f7e225d65eb3e508a9d4036bce47e406, type: 2}
