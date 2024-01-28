@@ -1378,7 +1378,6 @@ MonoBehaviour:
   startLoc: {fileID: 358707652}
   endLoc: {fileID: 750268871}
   emojiPrefab: {fileID: 3386779559747492258, guid: fc36c2be40392d5bb8a28c56d91828ff, type: 3}
-  emojis: []
 --- !u!1 &1690105029
 GameObject:
   m_ObjectHideFlags: 0
