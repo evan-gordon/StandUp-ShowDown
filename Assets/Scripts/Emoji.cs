@@ -8,7 +8,18 @@ public class Emoji : MonoBehaviour
     public SpriteRenderer emojiSpriteRenderer;
     [SerializeField]
     public Sprite[] newSprites;
-    // Start is called before the first frame update
+    public Conveyor conveyor;
+
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.name == "Player")
+        {
+            PlayerController.instance.AddAmmo(this.GetComponent<SpriteRenderer>().sprite);
+            PlayerController.instance.canShoot = true;
+            conveyor.RemoveEmoji(this.transform.parent.gameObject);
+            Destroy(this.transform.parent.gameObject);
+        }
+    }
     void Start()
     {
         emojiSpriteRenderer = GetComponent<SpriteRenderer>();

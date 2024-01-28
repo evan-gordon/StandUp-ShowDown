@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 197139066, guid: f80d6a203ee49b705962edaec6bf38a8, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4316842370888418217
@@ -135,6 +135,7 @@ MonoBehaviour:
   speed: 10
   life: 5
   direction: {x: 0, y: 0, z: 0}
+  BulletImage: {fileID: 1665132837, guid: f80d6a203ee49b705962edaec6bf38a8, type: 3}
 --- !u!1 &8284189425040668424
 GameObject:
   m_ObjectHideFlags: 0

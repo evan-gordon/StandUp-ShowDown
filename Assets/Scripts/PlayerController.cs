@@ -14,8 +14,10 @@ public class PlayerController : MonoBehaviour
     public GameObject gun;
 
     public float speed = 10f;
-    public int ammo = 0;
+    public bool canShoot =false;
     private int score = 0;
+
+    public Sprite currentBullet;
 
     void Awake()
     {
@@ -38,9 +40,9 @@ public class PlayerController : MonoBehaviour
 
     // Used by Pickup.cs
     // We can change this later to add different ammo types.
-    public void AddAmmo(int amount)
+    public void AddAmmo(Sprite BulletType)
     {
-        ammo += amount;
+        currentBullet = BulletType;
     }
 
     public void AddScore(int amount)
