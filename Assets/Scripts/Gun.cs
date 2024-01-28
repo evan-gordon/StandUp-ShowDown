@@ -25,6 +25,6 @@ public class Gun : MonoBehaviour
     public void Shoot()
     {
         GameObject b = Instantiate(bulletPrefab, transform.position, Quaternion.identity ) as GameObject;
-        b.GetComponent<Bullet>().direction = PlayerController.instance.transform.forward;
+        b.GetComponent<Bullet>().direction = PlayerController.playerCamera.transform.forward;
     }
 }
