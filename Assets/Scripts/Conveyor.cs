@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Conveyor : MonoBehaviour
@@ -14,9 +15,10 @@ public class Conveyor : MonoBehaviour
     private List<GameObject> emojis = new List<GameObject>();
     private float spawnTimer = 0f;
     private float spawnInterval = 2.5f;
+
+
     void Start()
     {
-        
     }
 
     void FixedUpdate()
