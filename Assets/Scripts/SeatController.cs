@@ -36,6 +36,10 @@ public class SeatController : MonoBehaviour
     // This flag determines whether we must use ALL advanced shapes before repeating any.
     private bool useUniqueShapesOnly = true;
 
+    public AudioSource AudioSource;
+    [SerializeField]
+    public AudioClip DeathSound;
+
     void Awake()
     {
         instance = this;
@@ -54,6 +58,7 @@ public class SeatController : MonoBehaviour
         RandomGrid(gridWidth, gridHeight);
         OverlayAdvancedShapes(2);
         InstantiateGrid();
+        AudioSource = gameObject.AddComponent<AudioSource>();
     }
 
     // Called once per frame
@@ -187,6 +192,7 @@ public class SeatController : MonoBehaviour
             if (kvp.Value == go)
             {
                 SeatToNPC.Remove(kvp.Key);
+                AudioSource.PlayOneShot(DeathSound);
                 return;
             }
         }
