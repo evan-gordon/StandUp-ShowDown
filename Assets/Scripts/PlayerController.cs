@@ -33,9 +33,7 @@ public class PlayerController : MonoBehaviour
             Input.GetAxis("Vertical") * speed * Time.deltaTime
         );
 
-        if (Input.GetMouseButton(0)){
-            gun.GetComponent<Gun>().Shoot();
-         }
+
     }
 
     // Used by Pickup.cs
