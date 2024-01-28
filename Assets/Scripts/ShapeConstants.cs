@@ -18,8 +18,6 @@ static class ShapeConstants
     // - X -
     public static readonly AudienceShape plus3x3;
 
-    private static int uniqueShapeCount = 3;
-
     static ShapeConstants () {
         square2x2 = new AudienceShape("square2x2", 2, 2, new bool[,] { { true, true }, { true, true } });
         circle3x3 = new AudienceShape("circle3x3", 3, 3, new bool[,] { { true, true, true }, { true, false, true }, { true, true, true } });
