@@ -26,6 +26,12 @@ public class Conveyor : MonoBehaviour
         // Move all the emojis on the belt, delete when necessary.
         for (var i = emojis.Count - 1; i >= 0; i--)
         {
+            // sometimes these get removed on pickup and it doesn't notify
+            if (emojis[i] == null)
+            {
+                emojis.RemoveAt(i);
+                continue;
+            }
             if (emojis[i].transform.position.x < endLoc.transform.position.x)
             {
                 var curr = emojis[i];
