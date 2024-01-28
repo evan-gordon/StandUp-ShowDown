@@ -8,12 +8,14 @@ public class PlayerController : MonoBehaviour
     // Used for getting global references to the player
     public static PlayerController instance;
     public static Camera playerCamera;
+    private Rigidbody rb;
 
     [SerializeField]
     public GameObject gun;
 
     public float speed = 10f;
     public int ammo = 0;
+    private int score = 0;
 
     void Awake()
     {
@@ -25,10 +27,10 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         playerCamera = GetComponentInChildren<Camera>();
+        rb = this.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.position = transform.position + playerCamera.transform.right * speed * Time.deltaTime * Input.GetAxis("Horizontal");
         transform.position = transform.position + playerCamera.transform.forward * speed * Time.deltaTime * Input.GetAxis("Vertical");
@@ -39,5 +41,10 @@ public class PlayerController : MonoBehaviour
     public void AddAmmo(int amount)
     {
         ammo += amount;
+    }
+
+    public void AddScore(int amount)
+    {
+        score += amount;
     }
 }

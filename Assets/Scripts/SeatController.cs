@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(Grid))]
 public class SeatController : MonoBehaviour
 {
+    // Singleton :)
+    public static SeatController instance;
     [SerializeField] public GameObject[] npcPrefabList;
     [SerializeField] public GameObject[] emojiPrefabList;
     private static Vector2Int gridCloseRight = new Vector2Int(-2, 0);
@@ -14,6 +16,7 @@ public class SeatController : MonoBehaviour
     // https://docs.unity3d.com/ScriptReference/Grid.html
     // https://docs.unity3d.com/ScriptReference/GridLayout.html
     private Grid g;
+    private Dictionary<Vector2Int, GameObject> SeatToNPC = new Dictionary<Vector2Int, GameObject>();
 
     private NPC[,] gridRepresentation; // This is an internal representation of which characters hold which seat.
     
@@ -28,6 +31,11 @@ public class SeatController : MonoBehaviour
     
     // This flag determines whether we must use ALL advanced shapes before repeating any.
     private bool useUniqueShapesOnly = true;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -61,8 +69,20 @@ public class SeatController : MonoBehaviour
                     // Pick random seat
                     newRequestX = random.Next(0, gridRepresentation.GetLength(0));
                     newRequestY = random.Next(0, gridRepresentation.GetLength(1));
+                    // check if seat is empty
+                    // looks like this doesn't totally work :/
+                    if (!SeatIsFilled(new Vector2Int(newRequestX, newRequestY)))
+                    {
+                        tries--;
+                        continue;
+                    }
+                    // check for request
+                    if (!gridRepresentation[newRequestX, newRequestY].HasActiveRequest())
+                    {
+                        break;
+                    }
                     tries--;
-                } while (gridRepresentation[newRequestX, newRequestY].HasActiveRequest() && tries > 0);
+                } while (tries > 0);
                 SpawnEmojiRequest(newRequestX, newRequestY);
             }
         }
@@ -130,9 +150,33 @@ public class SeatController : MonoBehaviour
                 Vector3 pos = getPositionVector(x, 3, z);
                 Debug.Log(pos);
                 // https://docs.unity3d.com/ScriptReference/Object.Instantiate.html
-                Instantiate(npcPrefabList[gridRepresentation[x,z].prefabNum], pos, Quaternion.identity, this.transform);
+                var go = Instantiate(npcPrefabList[gridRepresentation[x,z].prefabNum], pos, Quaternion.identity, this.transform) as GameObject;
+                SeatToNPC[new Vector2Int(x, z)] = go;
             }
         }
+    }
+
+    public void RegisterNPCSeat(Vector2Int loc, GameObject go)
+    {
+        SeatToNPC[loc] = go;
+    }
+
+    // This may cause sync issues with gridRepresentation, possibly want to look more into this.
+    public void RemoveNPCFromSeat(GameObject go)
+    {
+        foreach( KeyValuePair<Vector2Int, GameObject> kvp in SeatToNPC )
+        {
+            if (kvp.Value == go)
+            {
+                SeatToNPC.Remove(kvp.Key);
+                return;
+            }
+        }
+    }
+
+    public bool SeatIsFilled(Vector2Int loc)
+    {
+        return SeatToNPC.ContainsKey(loc);
     }
 
     private Vector3 getPositionVector(int x, int y, int z)

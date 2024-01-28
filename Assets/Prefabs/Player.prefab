@@ -108,6 +108,8 @@ MonoBehaviour:
   xSensitivity: 1.1
   ySensitivity: 0.5
   smoothRate: 2
+  maxUpAngle: 90
+  minUpAngle: -90
   player: {fileID: 0}
 --- !u!1 &4986754400194880500
 GameObject:
@@ -243,7 +245,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &6906020187158229943
@@ -258,4 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82226641bf4e73f96a3cb06d961d1742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 0}
   speed: 10
+  ammo: 0
